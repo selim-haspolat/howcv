@@ -10,7 +10,7 @@ import "../public/assets/libs/line-awesome/css/line-awesome.min.css";
 // import "swiper/css/navigation";
 // import "swiper/css/pagination";
 import "../public/assets/css/style.css";
-import Layout from "@/components/layout/Layout";
+
 import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,9 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Layout siteContentClass="pt0 pb0" headerClass="is-transparent">
-          {children}
-        </Layout>
+        {children}
         <Toaster />
       </body>
     </html>

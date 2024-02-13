@@ -1,26 +1,25 @@
 "use client";
 
-import instance from "@/app/helper/axios-instance";
+import instance from "@/helper/axios-instance";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-export default function SignIn() {
+export default function SignUp() {
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const { data } = await instance.post("/auth/login", { email, password });
-
-      console.log(data);
-
-      toast.success(`Welcome back! ${data.userName}`);
+      const user = await instance.post("/auth/register", {
+        userName,
+        email,
+        password,
+      });
     } catch (error) {
       toast.error(error.response.data.message);
-      console.log(error);
     }
   };
 
@@ -29,18 +28,30 @@ export default function SignIn() {
       <section className="page-title layout-02">
         <div className="container">
           <div className="inner align-center">
-            <h1 className="title">Sign in</h1>
+            <h1 className="title">Create an account</h1>
             <div className="desc">
-              New user?{" "}
-              <Link href="/register" title="Create an account">
-                Create an account
+              Already have an account?{" "}
+              <Link href="/login" title="Sign In">
+                Sign In
               </Link>
             </div>
           </div>
         </div>
       </section>
+
       <div className="container mb-5 pb-5">
-        <form action="#" className="sign-in" onSubmit={handleSubmit}>
+        <form action="#" className="sign-up" onSubmit={handleSubmit}>
+          <div className="field-input">
+            <label htmlFor="first_name">User Name*</label>
+            <input
+              type="text"
+              name="first_name"
+              id="first_name"
+              placeholder="ex: Kevin"
+              onChange={(e) => setUserName(e.target.value)}
+              value={userName}
+            />
+          </div>
           <div className="field-input">
             <label htmlFor="email">Email*</label>
             <input
@@ -65,16 +76,16 @@ export default function SignIn() {
             <i className="lar la-eye view-password" />
           </div>
           <div className="field-input field-checkbox">
-            <input
-              type="checkbox"
-              defaultValue="yes"
-              id="remember"
-              name="remember"
-            />
-            <label htmlFor="remember">Remember me</label>
+            <input type="checkbox" defaultValue="yes" id="terms" name="terms" />
+            <label htmlFor="terms">
+              I agree to the{" "}
+              <Link href="/" title="Terms & conditions">
+                Terms &amp; conditions
+              </Link>
+            </label>
           </div>
           <div className="field-submit">
-            <input type="submit" name="submit" defaultValue="Sign In" />
+            <input type="submit" name="submit" defaultValue="Register" />
           </div>
         </form>
       </div>

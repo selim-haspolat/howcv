@@ -4,7 +4,7 @@ import prisma from "@/prisma/prismadb";
 
 import jwt from "jsonwebtoken";
 
-export const POST = async (req ) => {
+export const GET = async (req) => {
   try {
     const access_token = req.cookies.get("access_token")?.value || null;
 
