@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
+import SwitchDarkLight from "../elements/SwitchDarkLight";
 
 const DashboardLayout = ({ children, user }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -13,6 +14,7 @@ const DashboardLayout = ({ children, user }) => {
         user={user}
       />
       <div className={`main ${sidebarOpen ? "open" : "close"}`}>{children}</div>
+      <SwitchDarkLight />
     </div>
   );
 };

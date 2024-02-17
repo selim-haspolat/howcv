@@ -1,7 +1,12 @@
+import Chat from "@/components/chat/Chat";
 import React from "react";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      <Chat />
+    </div>
+  );
 };
 
 export default Dashboard;

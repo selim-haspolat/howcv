@@ -10,14 +10,11 @@ import toast from "react-hot-toast";
 const Sidebar = ({ sidebarOpen, setSidebarOpen, user }) => {
   const SidebarLinks = [
     { name: "Home", path: "/", icon: "tabler:home" },
-    { name: "About", path: "/about", icon: "tabler:apps" },
-    { name: "Contact", path: "/contact", icon: "tabler:address-book" },
-    { name: "Ai", path: "/contact", icon: "tabler:robot" },
-    { name: "Ai", path: "/contact", icon: "tabler:message-chatbot" },
+    { name: "Subscription", path: "/subscription", icon: "tabler:credit-card" },
+    { name: "Ai 1", path: "/contact", icon: "tabler:robot" },
+    { name: "Ai 2", path: "/contact", icon: "tabler:message-chatbot" },
   ];
-
-  console.log(user);
-
+  
   const router = useRouter();
 
   const handleLogout = async () => {

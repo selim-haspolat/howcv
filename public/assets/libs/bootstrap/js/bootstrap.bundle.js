@@ -2025,7 +2025,7 @@
     }
 
     function isHTMLElement(node) {
-        var OwnElement = getWindow(node)Element;
+        var OwnElement = getWindow(node).Element;
         return node instanceof OwnElement || node instanceof HTMLElement;
     }
 
